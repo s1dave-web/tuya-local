@@ -1,0 +1,149 @@
+name: Fireplace
+products:
+  - id: vqi5rtwhwdtducq1
+    manufacturer: Flavel
+    model: Proflame SSL Opulence
+    model_id: BFM-16
+entities:
+  - entity: climate
+    icon: "mdi:fireplace"
+    dps:
+      - id: 101
+        type: boolean
+        name: hvac_mode
+        mapping:
+          - dps_val: false
+            value: "off"
+          - dps_val: true
+            value: heat
+      - id: 102
+        type: string
+        name: preset_mode
+        mapping:
+          - dps_val: "OFF"
+            value: Flame only
+          - dps_val: "HALF"
+            value: Half heat
+          - dps_val: "FULL"
+            value: Full heat
+          - dps_val: "AUTO"
+            value: Auto
+      - id: 113
+        type: integer
+        name: temperature
+        range:
+          min: 18
+          max: 27
+      - id: 114
+        type: integer
+        name: current_temperature
+      - id: 117
+        type: string
+        name: temperature_unit
+        mapping:
+          - dps_val: "C"
+            value: C
+          - dps_val: "F"
+            value: F
+  - entity: light
+    translation_key: embers
+    dps:
+      - id: 107
+        type: integer
+        name: brightness
+        range:
+          min: 0
+          max: 100
+  - entity: number
+    translation_key: flame_level
+    category: config
+    dps:
+      - id: 112
+        type: integer
+        name: value
+        range:
+          min: 1
+          max: 10
+  - entity: number
+    name: Flame blue
+    icon: "mdi:fire"
+    category: config
+    dps:
+      - id: 106
+        type: integer
+        name: value
+        unit: "%"
+        range:
+          min: 0
+          max: 100
+  - entity: number
+    name: Flame orange
+    icon: "mdi:fire"
+    category: config
+    dps:
+      - id: 111
+        type: integer
+        name: value
+        unit: "%"
+        range:
+          min: 0
+          max: 100
+  - entity: number
+    name: Flame red
+    icon: "mdi:fire"
+    category: config
+    dps:
+      - id: 109
+        type: integer
+        name: value
+        unit: "%"
+        range:
+          min: 0
+          max: 100
+  - entity: binary_sensor
+    name: Heating
+    class: running
+    dps:
+      - id: 110
+        type: boolean
+        name: sensor
+  - entity: switch
+    name: Flame only lockout
+    icon: "mdi:lock"
+    category: config
+    dps:
+      - id: 103
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Eco mode
+    icon: "mdi:leaf"
+    category: config
+    dps:
+      - id: 118
+        type: boolean
+        name: switch
+  - entity: number
+    translation_key: timer
+    class: duration
+    category: config
+    dps:
+      - id: 105
+        type: integer
+        name: value
+        unit: h
+        range:
+          min: 0
+          max: 24
+  - entity: select
+    translation_key: temperature_unit
+    category: config
+    dps:
+      - id: 117
+        type: string
+        name: option
+        mapping:
+          - dps_val: "C"
+            value: celsius
+          - dps_val: "F"
+            value: fahrenheit
